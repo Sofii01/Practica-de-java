@@ -4,13 +4,13 @@ public class Doctor {
     static int id =0; //autoincrement
     String name;
     String speciality;
-
-    Doctor(){
-        
-    }
+    String email;
+    
     Doctor(String name, String speciality){
         System.out.println("El nombre del Doctor asignado es: " +name);
         id++;
+        this.name=name;
+        this.speciality=speciality;
     }
     public void showId(){
         System.out.println("ID Doctor: "+id);

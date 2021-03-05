@@ -2,6 +2,7 @@ package JavaSEPOO.MyMedicalAppointments;
 
 public class Patient {
 
+    int id;
     private String name;
     private String email;
     private String address;
@@ -13,7 +14,13 @@ public class Patient {
     Patient (String name, String email){
         this.name= name;
         this.email=email;
+        this.weight=54.5;
+        this.height=1.65;
+        System.out.println(weight+"KG.");
+        System.out.println(height+ "Mts.");
+
     }
+
 
     /**
      * @return the name
@@ -89,6 +96,7 @@ public class Patient {
      * @return the weight
      */
     public Double getWeight() {
+    
         return weight;
     }
 
@@ -97,6 +105,7 @@ public class Patient {
      */
     public void setWeight(Double weight) {
         this.weight = weight;
+        
     }
 
     /**
@@ -111,6 +120,7 @@ public class Patient {
      */
     public void setHeight(Double height) {
         this.height = height;
+        
     }
 
     /**
