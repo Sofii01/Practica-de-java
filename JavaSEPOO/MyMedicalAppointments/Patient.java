@@ -11,14 +11,10 @@ public class Patient {
     private Double weight;
     private Double height;
     private String blood;
+
     Patient (String name, String email){
         this.name= name;
         this.email=email;
-        this.weight=54.5;
-        this.height=1.65;
-        System.out.println(weight+"KG.");
-        System.out.println(height+ "Mts.");
-
     }
 
 
@@ -68,6 +64,7 @@ public class Patient {
      * @return the phoneNumber
      */
     public String getPhoneNumber() {
+        
         return phoneNumber;
     }
 
@@ -75,7 +72,12 @@ public class Patient {
      * @param phoneNumber the phoneNumber to set
      */
     public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+        if(phoneNumber.length()>8){
+           System.out.println("El número telefónico debe ser de 8 digitos máximo"); 
+        }else if (phoneNumber.length()==8 ){
+            this.phoneNumber = phoneNumber;
+        }
+        
     }
 
     /**
@@ -95,9 +97,9 @@ public class Patient {
     /**
      * @return the weight
      */
-    public Double getWeight() {
+    public String getWeight() {
     
-        return weight;
+        return weight + " Kg.";
     }
 
     /**
