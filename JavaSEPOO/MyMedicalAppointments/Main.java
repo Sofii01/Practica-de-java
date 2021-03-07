@@ -1,32 +1,18 @@
 package JavaSEPOO.MyMedicalAppointments;
 
-
+import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {
-        /*Doctor myDoctor =new Doctor();
-        myDoctor.name="Alejandro Rodriguez";
-        myDoctor.speciality="Cardiologia";
-        myDoctor.showName();
-        myDoctor.showId();
-        myDoctor.showSpeciality();
-        */
-
-        //IUMenu.showMenu();
-        Doctor myDoctor= new Doctor("Anahi Slagado", "Pediatria");
-        System.out.println(myDoctor.name);
-        System.out.println(myDoctor.speciality);
-       
-
- 
-        Patient patient=new Patient("Alejandra", "alejandra@mail.com");
+        Doctor myDoctor=new Doctor("Anahi Salgado", "anahi@mail.com" , "Pediatria");
         
+        myDoctor.addAvailableAppointments(new Date(), "4pm");
+        myDoctor.addAvailableAppointments(new Date(), "10am");
+        myDoctor.addAvailableAppointments(new Date(), "1pm");
+        System.out.println(myDoctor);
+        Patient patient =new Patient("Sofia", "sofi@mail.com");
         
-        patient.setWeight(54.6);
-        System.out.println(patient.getWeight());
-        patient.setPhoneNumber("12345678");
-        System.out.println(patient.getPhoneNumber());
-
+        System.out.println(patient);
         
 
     }

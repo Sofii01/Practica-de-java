@@ -1,84 +1,16 @@
 package JavaSEPOO.MyMedicalAppointments;
 
-public class Patient {
+public class Patient extends User{
 
-    int id;
-    private String name;
-    private String email;
-    private String address;
-    private String phoneNumber;
     private String birthday;
     private Double weight;
     private Double height;
     private String blood;
 
     Patient (String name, String email){
-        this.name= name;
-        this.email=email;
+        super(name, email);
     }
 
-
-    /**
-     * @return the name
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * @param name the name to set
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * @return the email
-     */
-    public String getEmail() {
-        return email;
-    }
-
-    /**
-     * @param email the email to set
-     */
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    /**
-     * @return the address
-     */
-    public String getAddress() {
-        return address;
-    }
-
-    /**
-     * @param address the address to set
-     */
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    /**
-     * @return the phoneNumber
-     */
-    public String getPhoneNumber() {
-        
-        return phoneNumber;
-    }
-
-    /**
-     * @param phoneNumber the phoneNumber to set
-     */
-    public void setPhoneNumber(String phoneNumber) {
-        if(phoneNumber.length()>8){
-           System.out.println("El número telefónico debe ser de 8 digitos máximo"); 
-        }else if (phoneNumber.length()==8 ){
-            this.phoneNumber = phoneNumber;
-        }
-        
-    }
 
     /**
      * @return the birthday
@@ -138,6 +70,11 @@ public class Patient {
     public void setBlood(String blood) {
         this.blood = blood;
     }
-    
+    @Override
+    public String toString() {
+        
+        return super.toString()+ "\nAge: "+birthday+ "\nWeight: "+ 
+          getWeight()+ "\nHeight: "+getHeight()+ "\nBlood: "+blood;
+    }
 
 }
