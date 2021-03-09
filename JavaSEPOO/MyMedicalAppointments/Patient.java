@@ -1,5 +1,8 @@
 package JavaSEPOO.MyMedicalAppointments;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 public class Patient extends User{
 
     private String birthday;
@@ -7,66 +10,47 @@ public class Patient extends User{
     private Double height;
     private String blood;
 
-    Patient (String name, String email){
+
+    private ArrayList<AppointmentDoctor>appointmentDoctors=new ArrayList<>();
+    private ArrayList<AppointmentNurse>appointmentNurses=new ArrayList<>();
+    
+
+
+    public Patient (String name, String email){
         super(name, email);
     }
 
-
-    /**
-     * @return the birthday
-     */
     public String getBirthday() {
         return birthday;
     }
 
-    /**
-     * @param birthday the birthday to set
-     */
     public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
-    /**
-     * @return the weight
-     */
     public String getWeight() {
     
         return weight + " Kg.";
     }
 
-    /**
-     * @param weight the weight to set
-     */
     public void setWeight(Double weight) {
         this.weight = weight;
         
     }
 
-    /**
-     * @return the height
-     */
-    public Double getHeight() {
-        return height;
+    public String getHeight() {
+        return height + " Mts.";
     }
 
-    /**
-     * @param height the height to set
-     */
     public void setHeight(Double height) {
         this.height = height;
         
     }
 
-    /**
-     * @return the blood
-     */
     public String getBlood() {
         return blood;
     }
 
-    /**
-     * @param blood the blood to set
-     */
     public void setBlood(String blood) {
         this.blood = blood;
     }
@@ -75,6 +59,45 @@ public class Patient extends User{
         
         return super.toString()+ "\nAge: "+birthday+ "\nWeight: "+ 
           getWeight()+ "\nHeight: "+getHeight()+ "\nBlood: "+blood;
+    }
+
+
+    @Override
+    public void showDataUser() {
+        System.out.println("Paciente");
+        System.out.println("Historial completo desde nacimiento");
+        
+    }
+
+    public ArrayList<AppointmentDoctor> getAppointmentDoctors() {
+        return appointmentDoctors;
+    }
+
+
+    /**
+     * @param appointmentDoctors the appointmentDoctors to set
+     */
+    public void addAppointmentDoctors(Doctor doctor, Date date, String time) {
+        AppointmentDoctor appointmentDoctor=new AppointmentDoctor(this, doctor);
+        appointmentDoctor.schedule(date, time);
+        appointmentDoctors.add(appointmentDoctor);
+        
+    }
+
+
+    /**
+     * @return the appointmentNurses
+     */
+    public ArrayList<AppointmentNurse> getAppointmentNurses() {
+        return appointmentNurses;
+    }
+
+
+    /**
+     * @param appointmentNurses the appointmentNurses to set
+     */
+    public void setAppointmentNurses(ArrayList<AppointmentNurse> appointmentNurses) {
+        this.appointmentNurses = appointmentNurses;
     }
 
 }

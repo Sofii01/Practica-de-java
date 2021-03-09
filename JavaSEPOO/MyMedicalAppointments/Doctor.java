@@ -1,6 +1,8 @@
 package JavaSEPOO.MyMedicalAppointments;
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import java.util.Date;
@@ -8,7 +10,7 @@ import java.util.Date;
 public class Doctor extends User{
     
     private String speciality;
-      
+    private ArrayList<AvailableAppointment>availableAppointments= new ArrayList<>();
     public String getSpeciality() {
         return speciality;
     }
@@ -18,18 +20,16 @@ public class Doctor extends User{
     }
     
     
-    Doctor(String name, String email, String speciality){
+    public Doctor(String name, String email){
         super(name, email);
-        this.speciality=speciality;
-        System.out.println("El nombre del Doctor asignado es: " +name);
     }
     
     public void showSpeciality(){
         System.out.println("La especialidad del doctor es: "+speciality);
     }
 
-    ArrayList<AvailableAppointment>availableAppointments= new ArrayList<>();
-    public void addAvailableAppointments(Date date, String time){
+    public void addAvailableAppointments(String date, String time){
+        
         availableAppointments.add(new Doctor.AvailableAppointment(date, time));
 
     }
@@ -49,32 +49,23 @@ public class Doctor extends User{
         private int id;
         private Date date;
         private String time;
+        SimpleDateFormat format=new SimpleDateFormat("dd/MM/yyyy");
 
-       
-        /**
-         * @return the date
-         */
-        public Date getDate() {
+        public Date geDate(String Date){
             return date;
         }
+        public String getDate() {
+            return format.format(date);
+        }
 
-        /**
-         * @param date the date to set
-         */
         public void setDate(Date date) {
             this.date = date;
         }
 
-        /**
-         * @return the time
-         */
         public String getTime() {
             return time;
         }
 
-        /**
-         * @param time the time to set
-         */
         public void setTime(String time) {
             this.time = time;
         }
@@ -88,15 +79,32 @@ public class Doctor extends User{
         }
 
         /**
-         * @param date
+         * @param date2
          * @param time
          */
-        public AvailableAppointment(java.util.Date date, String time) {
-            this.date = date;
+        public AvailableAppointment(String date2, String time) {
+            try {
+                this.date = format.parse(date2);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
             this.time = time;
         }
         
         
+    }
+
+    @Override
+    public void showDataUser() {
+        System.out.println("Empleado del Hospital: Cruz Roja");
+        System.out.println("Departamento: Cancerología");
+        
+        
+    }
+
+    
+
+    public void addAvailableAppointments(Date date, String time) {
     }
 
   
